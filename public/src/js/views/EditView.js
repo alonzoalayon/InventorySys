@@ -16,6 +16,7 @@ var EditView = Backbone.View.extend({
     </ul>\
   '),
   initialize: function() {
+
       this.render();
   },
   render: function() {

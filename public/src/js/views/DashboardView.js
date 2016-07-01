@@ -1,9 +1,11 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
+var mongoose = require('mongoose');
 var FormView = require('./FormView');
 var EditView = require('./EditView');
 var ListView = require('./ListView');
-var ComputerCollection = require('../collections/ComputerCollection')
+var ComputerCollection = require('../collections/ComputerCollection');
+var ComputerModel = require('../models/ComputerModel');
 var DashboardView = Backbone.View.extend({
     el: '<div></div>',
 
@@ -121,16 +123,13 @@ var DashboardView = Backbone.View.extend({
       $('#form').html(formView.el);
     },
     handleEditComputer: function(){
-      var computerModel = new ComputerModel();
+      var computers = new ComputerCollection();
       computers.fetch();
-      var editView = new EditView({computers: this.model});
-      //var editView = new EditView();
-      //var tasksListView = new TasksListView();
-
-      //var sodasView = new SodasView({
-          //collection: sodas
-      //});
-
+      //computerModel.get('computer_id');
+      console.log(this.model);
+      var editView = new EditView({
+        model: this.model
+     });
       editView.render();
 
       //sodasView.render();

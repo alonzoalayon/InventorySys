@@ -7,14 +7,14 @@ var ComputerView = Backbone.View.extend({
     //...
 
     // this is the wrapper for your view, div is default. It's what is inside that "counts"
-    el: '<div></div>',
+    el: '<table></table>',
     // this is what is inserted inside your el, and what your view cares about
     // you see here I'm passing in a variable called task
-    template: _.template('<ul id="parentUL">\
-      <% computers.each(function(soda) { %>\
-        <li data-value=""><%= soda.get("computer_id") %></li>\
+    template: _.template('<td>\
+      <%computers.each(function(soda) { %>\
+        <tr data-value=""><%= soda.get("computer_id") %></tr>\
       <% }) %>\
-    </ul>\
+    </td>\
   '),
 
     initialize: function() {
@@ -30,20 +30,11 @@ var ComputerView = Backbone.View.extend({
     render: function() {
         // this is where your business logic goes.
         // it usually starts with...
-        $(this.el).html(this.template({
-            sodas: this.collection
-        }));
-        // this will stick the template inside of the el
+        this.$el.html(this.template());
         return this;
+
     }
 });
-var sodas = new ComputerCollection();
-sodas.fetch();
-var sodasView = new ComputerView({
-    collection: sodas
-});
-//sodasView.render();
-//making instances
-//make new collection
+
 
 module.exports = ComputerView;
