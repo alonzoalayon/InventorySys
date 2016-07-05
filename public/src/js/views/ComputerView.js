@@ -3,38 +3,47 @@ var mongoose = require('mongoose');
 var _ = require('underscore');
 var ComputerCollection = require('../collections/ComputerCollection');
 var ComputerModel = require('../models/ComputerModel');
-var ComputerView = Backbone.View.extend({
-    //...
+//var TableListView = require('./TableListView');
+var TableItemView = Backbone.View.extend({
+    el: '<tr></tr>',
 
-    // this is the wrapper for your view, div is default. It's what is inside that "counts"
-    el: '<table></table>',
-    // this is what is inserted inside your el, and what your view cares about
-    // you see here I'm passing in a variable called task
-    template: _.template('<td>\
-      <%computers.each(function(soda) { %>\
-        <tr data-value=""><%= soda.get("computer_id") %></tr>\
-      <% }) %>\
-    </td>\
+    template: _.template('\
+    <%= computer.get("computer_id") %>\
+    <%= computer.get("computer_owner") %>\
+    <%= computer.get("computer_description") %>\
+    <%= computer.get("computer_department") %>\
   '),
-
-    initialize: function() {
-        // `this` is referring to the current view instance
-        //this.listenTo(this.collection, 'update', this.render);
-        this.render();
-        // stick the template inside the el by calling render
-        //sodasView.render();
-        // insert the el element (with the rendered template inside) onto the DOM
-        //$("#hello").html(sodasView.render().el);
-    },
-
     render: function() {
-        // this is where your business logic goes.
-        // it usually starts with...
-        this.$el.html(this.template());
+      //e.preventDefault();
+      //event && event.preventDefault();
+        $(this.el).html(this.template({computer: this.model}));
         return this;
-
     }
 });
 
+var TableListView = Backbone.View.extend({
+    el: '<td></td>',
+    initialize: function(){
+      //listens to update even from collection and calls this.render
+      this.listenTo(this.collection, "update", this.render)
+      //this.listenTo(this.model, "remove", this.remove)
+    },
 
-module.exports = ComputerView;
+    render: function() {
+      //console.log(this.collection.length);
+      //console.log(basura.like);
+        var that = this;
+        // be sure to reset the container el, because if you re-render for any reason, you'll just keep adding to it
+        $(this.el).html('');
+
+        this.collection.each(function(computer) {
+            var tableItemView = new TableItemView({
+                model: computer
+            });
+            $(that.el).append(tableItemView.render().el);
+            //this.$el.html(this.template(this.model.toJSON()));
+        });
+
+        return this;
+    }
+});

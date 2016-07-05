@@ -1,20 +1,45 @@
 var Backbone = require('backbone');
+var mongoose = require('mongoose');
 var _ = require('underscore');
-var ComputerModel = require('./models/ComputerModel');
+var FormView = require('./FormView');
+var EditView = require('./EditView');
+var ComputerCollection = require('../collections/ComputerCollection');
+var ComputerModel = require('../models/ComputerModel');
+//var TableListView = require('./TableListView');
 var TableItemView = Backbone.View.extend({
-    el: '<li class="list-group-item" style="border: 17px solid #286090; border-top: 20px solid bisque;"></br></li>',
+    el: '<tr></tr>',
 
     template: _.template('\
-    <%= basura.get("basura") %>&nbsp;&nbsp;&nbsp;\
-    <img class="like faa-bounce animated-hover" src="../images/png/like.png" style="height:20px;" faa-bounce animated>\
-    <span class="me_gusta"><%= basura.get("like") %></span>&nbsp;&nbsp;&nbsp;\
-    <img class="update faa-pulse animated-hover" src="../images/png/edit.png" style="height:20px;">&nbsp;&nbsp;&nbsp;\
-    <img class="destroy faa-flash animated-hover" src="../images/png/error.png" style="height:20px;">\
+    <td><%= computer.get("computer_id") %></td>\
+    <td><%= computer.get("computer_owner") %></td>\
+    <td><%= computer.get("computer_description") %></td>\
+    <td><%= computer.get("computer_department") %></td>\
+    <td><button class="btn btn-success href="" id="editComputer">Edit Computer</button></td>\
+    <td><button class="btn btn-danger href="" id="destroyComputer">Delete Computer</button></td>\
   '),
+  events: {
+    'click #editComputer': "handleUpdate",
+    'click #destroyComputer': 'handleDestroyComputer'
+  },
+  handleUpdate: function(){
+    this.model.get('computer');
+    console.log(this.model);
+    var editView = new EditView({
+      model: this.model
+   });
+
+    editView.render();
+    $('#form').html(editView.el);
+  },
+  handleDestroyComputer: function(){
+    //this.model.get('computer');
+    //.log(this.model);
+    this.model.destroy();
+  },
     render: function() {
       //e.preventDefault();
       //event && event.preventDefault();
-        $(this.el).html(this.template({basura: this.model}));
+        $(this.el).html(this.template({computer: this.model}));
         return this;
     }
 });

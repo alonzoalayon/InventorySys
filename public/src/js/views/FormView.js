@@ -1,5 +1,7 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
+var ComputerModel = require('../models/ComputerModel');
+var ComputerCollection = require('../collections/ComputerCollection');
 var FormView = Backbone.View.extend({
     el: '<div class="form-group"></div>',
 
@@ -16,12 +18,11 @@ var FormView = Backbone.View.extend({
     <label for="exampleCategory">Please select a user.</label>\
     <div class="input-group">\
         <div class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></div>\
-    <select class="form-control" name="computer_owner" id="category" tabindex="3">\
-    <option value="">Select Category</option>\
-    <option value="Help">HELP/ASSISTANCE</option>\
-    <option value="Bugs">BUGS/ERRORS</option>\
-    <option value="Requests">REQUESTS</option>\
-    </select>\
+        <select class="form-control" name="computer_owner" id="category" tabindex="3">\
+            <% computers.each(function(computer) { %>\
+                <option value="computer.get(\'computer_owner\')"><%= computer.get("computer_owner") %></option>\
+            <% }); %>\
+        </select>\
     </div>\
     </div>\
     <div class="form-group">\
@@ -65,12 +66,12 @@ var FormView = Backbone.View.extend({
         // this is where your business logic goes.
         // it usually starts with...
         $(this.el).html(this.template({
-            //sodas: this.collection
+            computers: this.collection
         }));
         // this will stick the template inside of the el
         return this;
     }
 });
-//var formView = new FormView({ el: $("#form") });
+
 
 module.exports = FormView;

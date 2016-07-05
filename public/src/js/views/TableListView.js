@@ -1,10 +1,9 @@
 var Backbone = require('backbone');
+var mongoose = require('mongoose');
 var _ = require('underscore');
-var TableItemView = ('./TableItemView');
-var ComputerModel = ('./ComputerModel');
-)
+var TableItemView = require('./TableItemView');
 var TableListView = Backbone.View.extend({
-    el: '<ul class="list-group"></ul>',
+    el: '<table></table>',
     initialize: function(){
       //listens to update even from collection and calls this.render
       this.listenTo(this.collection, "update", this.render)
@@ -18,10 +17,10 @@ var TableListView = Backbone.View.extend({
         // be sure to reset the container el, because if you re-render for any reason, you'll just keep adding to it
         $(this.el).html('');
 
-        this.collection.each(function(basura) {
-            //var tableItemView = new TableItemView({model: computer});
-            var computerModel = new ComputerModel();
-            var tableItemView = new TableItemView(model: computerModel);
+        this.collection.each(function(computer) {
+            var tableItemView = new TableItemView({
+                model: computer
+            });
             $(that.el).append(tableItemView.render().el);
             //this.$el.html(this.template(this.model.toJSON()));
         });
@@ -29,4 +28,4 @@ var TableListView = Backbone.View.extend({
         return this;
     }
 });
-module.exports = TableListView;
+module.exports = TableListView

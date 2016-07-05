@@ -6,6 +6,7 @@ var EditView = require('./EditView');
 var ListView = require('./ListView');
 var ComputerCollection = require('../collections/ComputerCollection');
 var ComputerModel = require('../models/ComputerModel');
+var TableListView = require('./TableListView');
 var DashboardView = Backbone.View.extend({
     el: '<div></div>',
 
@@ -26,8 +27,9 @@ var DashboardView = Backbone.View.extend({
                 </div>\
                 <a href="#">\
                     <div class="panel-footer">\
-                        <span id="viewForm" class="pull-left">View Details</span>\
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>\
+                        <span class="pull-left viewComputers">View Computers</span>\
+                        <span class="pull-left viewComputers"><i class="fa fa-arrow-circle-right"></i></span>\
+                        <span class="pull-right addComputers"><i class="fa fa fa-plus-circle"></i></span>\
                         <div class="clearfix"></div>\
                     </div>\
                 </a>\
@@ -48,7 +50,7 @@ var DashboardView = Backbone.View.extend({
                 </div>\
                 <a href="#">\
                     <div class="panel-footer">\
-                        <span id="editComputer" class="pull-left">View Details</span>\
+                        <span class="pull-left">View Printers</span>\
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>\
                         <div class="clearfix"></div>\
                     </div>\
@@ -105,36 +107,32 @@ var DashboardView = Backbone.View.extend({
         this.render();
     },
     events:{
-      'click #viewForm': 'handleView',
-      'click #editComputer' : "handleEditComputer"
+      'click .viewComputers': 'handleViewComputer',
+      'click .addComputers': 'handleAddComputer'
     },
-    handleView: function(){
-      var formView = new FormView();
-      //var editView = new EditView();
-      //var tasksListView = new TasksListView();
-
-      //var sodasView = new SodasView({
-          //collection: sodas
-      //});
-
-      formView.render();
-
-      //sodasView.render();
-      $('#form').html(formView.el);
-    },
-    handleEditComputer: function(){
+    handleAddComputer: function(){
       var computers = new ComputerCollection();
       computers.fetch();
-      //computerModel.get('computer_id');
-      console.log(this.model);
-      var editView = new EditView({
-        model: this.model
-     });
-      editView.render();
-
-      //sodasView.render();
-      $('#form').html(editView.el);
+      console.log(computers);
+      var formView = new FormView({
+          collection: computers
+      });
+      formView.render();
+      $('#form').html(formView.el);
     },
+    handleViewComputer: function(){
+      var computers = new ComputerCollection();
+      computers.fetch();
+      //console.log(tasks);
+      var tableListView = new TableListView({
+          collection: computers
+      });
+
+      //var tasks = new FormView({collection: tasks});
+      //$('#form').html(formView.el);
+      $("#form").html(tableListView.render().el);
+    },
+
     render: function() {
         // this is where your business logic goes.
         // it usually starts with...
