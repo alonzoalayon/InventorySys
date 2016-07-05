@@ -20,7 +20,7 @@ var FormView = Backbone.View.extend({
         <div class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></div>\
         <select class="form-control" name="computer_owner" id="category" tabindex="3">\
             <% computers.each(function(computer) { %>\
-                <option value="computer.get(\'computer_owner\')"><%= computer.get("computer_owner") %></option>\
+                <option value="<%= computer.get(\'computer_owner\') %>"><%= computer.get(\'computer_owner\') %></option>\
             <% }); %>\
         </select>\
     </div>\

@@ -29,6 +29,7 @@ var DashboardView = Backbone.View.extend({
                     <div class="panel-footer">\
                         <span class="pull-left viewComputers">View Computers</span>\
                         <span class="pull-left viewComputers"><i class="fa fa-arrow-circle-right"></i></span>\
+                        <span class="pull-right addComputers">Add Computers</span>\
                         <span class="pull-right addComputers"><i class="fa fa fa-plus-circle"></i></span>\
                         <div class="clearfix"></div>\
                     </div>\
