@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //var bootstrap = require('bootstrap');
 var mongoose = require('mongoose');
-mongoose.connect('process.env.mongodb://heroku_fq1d2q5f:59gpijlt8gocigsashndivl2hp@dbh83.mlab.com:27837/heroku_fq1d2q5f' || 'mongodb://localhost/Computer_Systems');
+mongoose.connect('mongodb://heroku_fq1d2q5f:59gpijlt8gocigsashndivl2hp@dbh83.mlab.com:27837/heroku_fq1d2q5f' || 'mongodb://localhost/Computer_Systems');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var computers = require('./routes/computers');
