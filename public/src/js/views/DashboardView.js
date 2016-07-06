@@ -11,7 +11,39 @@ var DashboardView = Backbone.View.extend({
     el: '<div></div>',
 
     template: _.template('\
+    <div class="container">\
     <div class="row">\
+    <div class="col-lg-3 col-md-6">\
+        <div class="panel panel-danger">\
+            <div class="panel-heading">\
+                <div class="row">\
+                    <div class="col-xs-3">\
+                        <i class="fa fa-user fa-5x"></i>\
+                    </div>\
+                    <div class="col-xs-9 text-right">\
+                        <div class="huge">26</div>\
+                        <div>New Comments!</div>\
+                    </div>\
+                </div>\
+            </div>\
+            <a href="#" class="viewComputers">\
+                <div class="panel-footer">\
+                <div class="clearfix">\
+                    <span class="pull-left">View Computers</span>\
+                    <span class="pull-right"><i class="fa fa-2x fa-arrow-circle-right"></i></span>\
+                    <div class="clearfix"></div>\
+                </div>\
+                  </div>\
+            </a>\
+            <a href="#" class="addComputers">\
+                <div class="panel-footer">\
+                <span class="pull-left">Add Computers</span>\
+                <span class="pull-right"><i class="fa fa-2x fa-plus-circle"></i></span>\
+                    <div class="clearfix"></div>\
+                </div>\
+            </a>\
+        </div>\
+    </div>\
         <div class="col-lg-3 col-md-6">\
             <div class="panel panel-primary">\
                 <div class="panel-heading">\
@@ -25,17 +57,26 @@ var DashboardView = Backbone.View.extend({
                         </div>\
                     </div>\
                 </div>\
-                <a href="#">\
+                <a href="#" class="viewComputers">\
                     <div class="panel-footer">\
-                        <span class="pull-left viewComputers">View Computers</span>\
-                        <span class="pull-left viewComputers"><i class="fa fa-arrow-circle-right"></i></span>\
-                        <span class="pull-right addComputers">Add Computers</span>\
-                        <span class="pull-right addComputers"><i class="fa fa fa-plus-circle"></i></span>\
+                    <div class="clearfix">\
+                        <span class="pull-left">View Computers</span>\
+                        <span class="pull-right"><i class="fa fa-2x fa-arrow-circle-right"></i></span>\
+                        <div class="clearfix"></div>\
+                    </div>\
+                      </div>\
+                </a>\
+                <a href="#" class="addComputers">\
+                    <div class="panel-footer">\
+                    <span class="pull-left">Add Computers</span>\
+                    <span class="pull-right"><i class="fa fa-2x fa-plus-circle"></i></span>\
                         <div class="clearfix"></div>\
                     </div>\
                 </a>\
             </div>\
         </div>\
+        <br>\
+        <div id="form"></div>\
         <div class="col-lg-3 col-md-6">\
             <div class="panel panel-success">\
                 <div class="panel-heading">\
@@ -103,6 +144,7 @@ var DashboardView = Backbone.View.extend({
             </div>\
         </div>\
     </div>\
+    </div>\
   '),
     initialize: function() {
         this.render();
@@ -114,7 +156,8 @@ var DashboardView = Backbone.View.extend({
     handleAddComputer: function(){
       var computers = new ComputerCollection();
       computers.fetch();
-      console.log(computers);
+      //var computers = new ComputerModel();
+      //console.log(computers);
       var formView = new FormView({
           collection: computers
       });

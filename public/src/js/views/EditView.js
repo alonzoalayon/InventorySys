@@ -22,11 +22,7 @@ var EditView = Backbone.View.extend({
     <label for="exampleCategory">Please select a user.</label>\
     <div class="input-group">\
         <div class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></div>\
-        <select class="form-control" name="computer_name" id="category" tabindex="3">\
-            <% computers.each(function(computer) { %>\
-                <option value="<%= computer.get(\'computer_owner\') %>"><%= computer.get(\'computer_owner\') %></option>\
-            <% }); %>\
-        </select>\
+    <input type="text" class="form-control" name="computer_owner" tabindex="1" id="input" value="<%= computer_owner %>"placeholder="Name">\
     </div>\
     </div>\
     <div class="form-group">\
@@ -36,16 +32,6 @@ var EditView = Backbone.View.extend({
         <input type="email" class="form-control" name ="computer_description" tabindex="2" id="email" placeholder="Email">\
     </div>\
     </div>\
-   <div class="form-group">\
-   <label for="exampleCategory">Please select a department.</label>\
-   <div class="input-group">\
-       <div class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></div>\
-   <select class="form-control" name="computer_department" id="category" tabindex="3">\
-   <option value="">Select Category</option>\
-   <option value="<%= computer_owner %>"><%= computer_owner %></option>\
-   </select>\
-   </div>\
-   </div>\
       <div class="form-group">\
           <div class="input-group">\
           <div class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></div>\
@@ -79,9 +65,7 @@ var EditView = Backbone.View.extend({
     render: function() {
         // this is where your business logic goes.
         // it usually starts with...
-        $(this.el).html(this.template({
-            computers: this.collection
-        }));
+        $(this.el).html(this.template(this.model.toJSON()));
         // this will stick the template inside of the el
         return this;
     }

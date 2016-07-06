@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var _ = require('underscore');
 var TableItemView = require('./TableItemView');
 var TableListView = Backbone.View.extend({
-    el: '<table></table>',
+    el: '<table class="table table-striped table-bordered"></table>',
     initialize: function(){
       //listens to update even from collection and calls this.render
       this.listenTo(this.collection, "update", this.render)
