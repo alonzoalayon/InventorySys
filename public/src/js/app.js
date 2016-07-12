@@ -24,7 +24,7 @@ computerView.render();
 
 //$('#content').html(dashboardView.el);
 $('#menu').html(menuView.el);
-$('#content').html(tabsView.el);
+$('#tabsView').html(tabsView.el);
 $('#printersInventory').html(computerView.el);
 //computerView.render();
 //var computerCollection = new LitterCollection();

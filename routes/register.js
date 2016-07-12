@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var passport = require('passport');
 router.get('/register', function(req, res, next) {
   if(req.isAuthenticated()) {
     res.redirect('/');
