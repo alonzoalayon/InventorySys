@@ -1,9 +1,19 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
+var bcrypt = require('bcrypt');
+var UserModel = require('../models/UserModel');
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  if(!req.isAuthenticated()) {
+    res.redirect('/login');
+  } else {
+    res.render('index', {
+      title: 'Express',
+      //when authenticated, all of our `req` in our routes will have the authenticated user attached
+      username: req.user.username
+    });
+  }
 });
 
 module.exports = router;
