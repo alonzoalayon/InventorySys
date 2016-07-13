@@ -3,7 +3,8 @@ var router = express.Router();
 var passport = require('passport');
 var bcrypt = require('bcrypt');
 var UserModel = require('../models/UserModel');
-
+//...
+//...
 router.get('/login', function(req, res, next) {
   if(req.isAuthenticated()) {
     res.redirect('/');
@@ -11,7 +12,6 @@ router.get('/login', function(req, res, next) {
     res.render('login');
   }
 });
-
 router.get('/', function(req, res, next) {
   if(!req.isAuthenticated()) {
     res.redirect('/login');
@@ -30,6 +30,7 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
   // `req.user` contains the authenticated user.
   res.redirect('/'); //can only navigate to '/' if
 });
+
 router.get('/register', function(req, res, next) {
   if(req.isAuthenticated()) {
     res.redirect('/');
@@ -83,4 +84,5 @@ router.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/login');
 });
+
 module.exports = router;

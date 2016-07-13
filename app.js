@@ -5,8 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //var bootstrap = require('bootstrap');
-//...
-
 var mongoose = require('mongoose');
 var middleware = require('./routes/middleware');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Computer_Systems');
@@ -40,8 +38,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', routes);
-app.use('/users', users);
-app.use('/computers', computers);
+app.use('/users', middleware.auth, users);
+app.use('/computers', middleware.auth, computers);
 
 
 
@@ -75,6 +73,10 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+
+
+
 
 
 module.exports = app;

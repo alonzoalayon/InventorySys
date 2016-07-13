@@ -5,12 +5,14 @@ var bootstrap = require('bootstrap');
 var MenuView = require('./views/MenuView.js');
 var TabsView = require('./views/TabsView.js');
 var ComputerUsersView = require('./views/ComputerUsersView.js');
+var ContentView = require('./views/ContentView.js');
 //var TableListView = require('./views/TableListView.js');
 //var ComputerModel = require('./models/ComputerModel.js');
 var menuView = new MenuView();
 var computerView = new ComputerUsersView();
 //var dashboardView = new DashboardView();
-var tabsView = new TabsView();
+
+var contentView = new ContentView();
 //var computerModel = new ComputerModel();
 //var computerView = new ComputerView({collection: computerCollection});
 //var computerCollection = new ComputerCollection();
@@ -18,14 +20,17 @@ var tabsView = new TabsView();
 //computerModel.get('computer_id');
 //this.model.get('computer_id');
 menuView.render();
-tabsView.render();
-computerView.render();
+
+//computerView.render();
+contentView.render();
 //dashboardView.render();
 
 //$('#content').html(dashboardView.el);
-$('#menu').html(menuView.el);
-$('#tabsView').html(tabsView.el);
-$('#printersInventory').html(computerView.el);
+//$('#wrapper').html(menuView.el);
+
+//$('#printersInventory').html(computerView.el);
+//$('#wrapper').html(menuView.el);
+$('#page-content-wrapper').append(contentView.el);
 //computerView.render();
 //var computerCollection = new LitterCollection();
 //computerCollection.fetch();
