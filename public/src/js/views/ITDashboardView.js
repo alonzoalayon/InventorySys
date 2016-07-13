@@ -27,18 +27,18 @@ var ArenaDashboardView = Backbone.View.extend({
             <div class="panel-heading">\
                 <div class="row">\
                     <div class="col-xs-3">\
-                        <i class="fa fa-user fa-5x"></i>\
+                        <i class="fa fa-wifi fa-5x"></i>\
                     </div>\
                     <div class="col-xs-9 text-right">\
-                        <div class="huge">26</div>\
-                        <div>New Comments!</div>\
+                        <div class="huge"></div>\
+                        <div></div>\
                     </div>\
                 </div>\
             </div>\
             <a href="#" class="viewComputers">\
                 <div class="panel-footer">\
                 <div class="clearfix">\
-                    <span class="pull-left" style="color: #A94442;">View Computers</span>\
+                    <span class="pull-left" style="color: #A94442;">View Hotspots</span>\
                     <span class="pull-right" style="color: #A94442;"><i class="fa fa-2x fa-arrow-circle-right"></i></span>\
                     <div class="clearfix"></div>\
                 </div>\
@@ -46,7 +46,7 @@ var ArenaDashboardView = Backbone.View.extend({
             </a>\
             <a href="#" class="addComputers">\
                 <div class="panel-footer">\
-                <span class="pull-left" style="color: #A94442;">Add Computers</span>\
+                <span class="pull-left" style="color: #A94442;">Add Hotspots</span>\
                 <span class="pull-right" style="color: #A94442;"><i class="fa fa-2x fa-plus-circle"></i></span>\
                     <div class="clearfix"></div>\
                 </div>\
@@ -61,8 +61,8 @@ var ArenaDashboardView = Backbone.View.extend({
                             <i class="fa fa-desktop fa-5x"></i>\
                         </div>\
                         <div class="col-xs-9 text-right">\
-                            <div class="huge">26</div>\
-                            <div>New Comments!</div>\
+                            <div class="huge"></div>\
+                            <div></div>\
                         </div>\
                     </div>\
                 </div>\
@@ -92,8 +92,8 @@ var ArenaDashboardView = Backbone.View.extend({
                             <i class="fa fa-print fa-5x"></i>\
                         </div>\
                         <div class="col-xs-9 text-right">\
-                            <div class="huge">12</div>\
-                            <div>New Tasks!</div>\
+                            <div class="huge"></div>\
+                            <div></div>\
                         </div>\
                     </div>\
                 </div>\
@@ -113,64 +113,6 @@ var ArenaDashboardView = Backbone.View.extend({
                 </a>\
             </div>\
         </div>\
-        <div class="col-lg-3 col-md-6">\
-            <div class="panel panel-warning">\
-                <div class="panel-heading">\
-                    <div class="row">\
-                        <div class="col-xs-3">\
-                            <i class="fa fa-print fa-5x"></i>\
-                        </div>\
-                        <div class="col-xs-9 text-right">\
-                            <div class="huge">124</div>\
-                            <div>New Orders!</div>\
-                        </div>\
-                    </div>\
-                </div>\
-                <a href="#">\
-                    <div class="panel-footer">\
-                        <span class="pull-left">View Details</span>\
-                        <span class="pull-right"><i class="fa fa-2x fa-arrow-circle-right"></i></span>\
-                        <div class="clearfix"></div>\
-                    </div>\
-                </a>\
-                <a href="#">\
-                    <div class="panel-footer">\
-                        <span class="pull-left">View Details</span>\
-                        <span class="pull-right"><i class="fa fa-2x fa-arrow-circle-right"></i></span>\
-                        <div class="clearfix"></div>\
-                    </div>\
-                </a>\
-            </div>\
-        </div>\
-        <div class="col-lg-3 col-md-6">\
-            <div class="panel panel-danger">\
-                <div class="panel-heading">\
-                    <div class="row">\
-                        <div class="col-xs-3">\
-                            <i class="fa fa-support fa-5x"></i>\
-                        </div>\
-                        <div class="col-xs-9 text-right">\
-                            <div class="huge">13</div>\
-                            <div>Support Tickets!</div>\
-                        </div>\
-                    </div>\
-                </div>\
-                <a href="#">\
-                    <div class="panel-footer">\
-                        <span class="pull-left">View Details</span>\
-                        <span class="pull-right"><i class="fa fa-2x fa-arrow-circle-right"></i></span>\
-                        <div class="clearfix"></div>\
-                    </div>\
-                </a>\
-                <a href="#">\
-                    <div class="panel-footer">\
-                        <span class="pull-left">View Details</span>\
-                        <span class="pull-right"><i class="fa fa-2x fa-arrow-circle-right"></i></span>\
-                        <div class="clearfix"></div>\
-                    </div>\
-                </a>\
-            </div>\
-        </div>\
     </div>\
     </div>\
   '),
@@ -185,6 +127,7 @@ var ArenaDashboardView = Backbone.View.extend({
     },
     handleAddComputer: function(){
       var computers = new ComputerCollection();
+    
       computers.fetch();
       //var computers = new ComputerModel();
       //console.log(computers);
