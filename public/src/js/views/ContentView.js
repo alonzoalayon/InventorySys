@@ -1,6 +1,7 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
 var ArenaDashboardView = require('./ArenaDashboardView');
+var ITDashboardView = require('./ITDashboardView');
 var ContentView = Backbone.View.extend({
     el: '<div></div>',
 
@@ -27,7 +28,7 @@ margin-right: auto; ">\
                </div>\
                <div class="col-lg-4 col-md-6">\
                <div class="panel panel-primary boxed" style="background-color: #E63B2E;border: 5px solid #FBFBFF ;">\
-                  <a href="#"><div class="panel-body">\
+                  <a href="#" class="it"><div class="panel-body">\
                   <h2 style="font-family: \'Cantarell\', sans-serif;" align="center">IT</h2>\
                   <img class="img-responsive" src="../images/essential-collection/png/server.png" style="height: 50px; display: block; margin-left: auto; margin-right: auto; ">\
                   </div></a>\
@@ -35,12 +36,12 @@ margin-right: auto; ">\
             </div>\
             <div class="col-lg-4 col-md-6">\
             <div class="panel panel-primary boxed" style="background-color: #FF6B35;border: 5px solid #FBFBFF ;">\
-               <a href="#"><div class="panel-body">\
+               <div class="panel-body">\
                <h2 style="font-family: \'Cantarell\', sans-serif;" align="center">STORE</h2>\
                <img class="img-responsive" src="../images/essential-collection/png/price-tag.png" style="height: 50px; display: block;\
 margin-left: auto;\
 margin-right: auto; ">\
-               </div></a>\
+               </div>\
              </div>\
          </div>\
                   <!--<div id="content"></div>-->\
@@ -52,13 +53,20 @@ margin-right: auto; ">\
         this.render();
     },
     events:{
-      'click #arena': 'handleArenaView'
+      'click #arena': 'handleArenaView',
+      'click .it': 'handleITView'
     },
     handleArenaView: function(){
       console.log('hello');
       var tabsView = new ArenaDashboardView();
       tabsView.render();
       $('#page-content-wrapper').html(tabsView.el);
+    },
+    handleITView: function(){
+      console.log('hello');
+      var itdashboardView = new ITDashboardView();
+      itdashboardView.render();
+      $('#page-content-wrapper').html(itdashboardView.el);
     },
     render: function() {
         // this is where your business logic goes.

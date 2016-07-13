@@ -6,8 +6,11 @@ var FormView = Backbone.View.extend({
     el: '<div></div>',
 
     template: _.template('\
+    <div class="container">\
     <div class="row">\
-    <div class="col-md-6">\
+        <h1 align="center" class="page-header" style="font-family: \'Cantarell\', sans-serif; background-color: #FFBF46;border: 5px solid #FBFBFF ;">Invent Story System</h1>\
+        <h1 align="center" class="page-header" style="font-family: \'Cantarell\', sans-serif; background-color: #E63B2E;border: 5px solid #FBFBFF ;">IT</h1>\
+    <div class="col-lg-3 col-md-6">\
       <form method="post" action="/computers">\
       <div class="form-group">\
         <label for="exampleInputName">Computer ID</label>\
@@ -47,6 +50,9 @@ var FormView = Backbone.View.extend({
      </div>\
       <button type="submit" id="submitButton" class="btn btn-primary" tabindex="6">Submit</button>\
     </form>\
+    </div>\
+    </div>\
+    </div>\
     </div>\
     </div>\
   '),
