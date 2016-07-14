@@ -11,11 +11,6 @@ var ArenaDashboardView = Backbone.View.extend({
     el: '<div></div>',
 
     template: _.template('\
-    <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">\
-      <span class="hamb-top"></span>\
-      <span class="hamb-middle"></span>\
-      <span class="hamb-bottom"></span>\
-    </button>\
     <div class="container">\
     <div class="row">\
         <h1 align="center" class="page-header" style="font-family: \'Cantarell\', sans-serif; background-color: #FFBF46;border: 5px solid #FBFBFF ;">Invent Story System</h1>\

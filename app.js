@@ -15,6 +15,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var passport = require('./config/passport');
 
+
 var app = express();
 
 // view engine setup

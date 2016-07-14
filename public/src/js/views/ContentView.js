@@ -6,15 +6,6 @@ var ContentView = Backbone.View.extend({
     el: '<div></div>',
 
     template: _.template('\
-    <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">\
-      <span class="hamb-top"></span>\
-      <span class="hamb-middle"></span>\
-      <span class="hamb-bottom"></span>\
-    </button>\
-      <div class="container">\
-   <p>Signed in as </p>\
-          <div class="row">\
-              <div class="col-lg-8 col-lg-offset-2">\
                   <h1 align="center" class="page-header" style="font-family: \'Cantarell\', sans-serif; background-color: #FFBF46;border: 5px solid #FBFBFF ;">Invent Story System</h1>\
                   <div class="col-lg-4 col-md-6">\
                   <div class="panel panel-primary boxed" style="background-color: #01BAEF;border: 5px solid #FBFBFF ;">\
@@ -45,9 +36,6 @@ margin-right: auto; ">\
              </div>\
          </div>\
                   <!--<div id="content"></div>-->\
-              </div>\
-          </div>\
-      </div>\
   '),
     initialize: function() {
         this.render();
@@ -66,6 +54,7 @@ margin-right: auto; ">\
       console.log('hello');
       var itdashboardView = new ITDashboardView();
       itdashboardView.render();
+      this.remove();
       $('#page-content-wrapper').html(itdashboardView.el);
     },
     render: function() {

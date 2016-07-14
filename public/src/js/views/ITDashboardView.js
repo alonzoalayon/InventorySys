@@ -8,7 +8,7 @@ var ListView = require('./ListView');
 var ComputerCollection = require('../collections/ComputerCollection');
 var ComputerModel = require('../models/ComputerModel');
 var TableListView = require('./TableListView');
-var ContentView = require('./ContentView.js');
+var ContentView = require('./ContentView');
 var ArenaDashboardView = Backbone.View.extend({
     el: '<div></div>',
 
@@ -127,7 +127,7 @@ var ArenaDashboardView = Backbone.View.extend({
     },
     handleAddComputer: function(){
       var computers = new ComputerCollection();
-    
+
       computers.fetch();
       //var computers = new ComputerModel();
       //console.log(computers);
@@ -150,8 +150,8 @@ var ArenaDashboardView = Backbone.View.extend({
       $("#page-content-wrapper").html(tableListView.render().el);
     },
     handleHome: function(){
-      //var contentView = new ContentView();
-      //contentView.render();
+      var contentView = new ContentView();
+      contentView.render();
       $('#page-content-wrapper').append(contentView.el);
     },
 
