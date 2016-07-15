@@ -9,7 +9,7 @@ var ComputerUsersView = require('./views/ComputerUsersView.js');
 var ContentView = require('./views/ContentView.js');
 var AppRouter = require('./routes/AppRouter.js');
 //var Router = require('..../routes/Router.js');
-var appRouter = new AppRouter();
+window.appRouter = new AppRouter();
  //Backbone.history.start();
 //var RouteMenu = require('./views/RouteMenu.js')
 //var TableListView = require('./views/TableListView.js');
@@ -37,7 +37,7 @@ var computerView = new ComputerUsersView();
 //dashboardView.render();
 
 //$('#content').html(contentView.el);
-Backbone.history.start({pushState: true});
+Backbone.history.start();
 //$('#wrapper').html(menuView.el);
 
 //$('#printersInventory').html(computerView.el);

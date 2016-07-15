@@ -13,7 +13,7 @@ var ArenaDashboardView = Backbone.View.extend({
     template: _.template('\
     <div class="container">\
     <div class="row">\
-        <h1 align="center" class="page-header" style="font-family: \'Cantarell\', sans-serif; background-color: #FFBF46;border: 5px solid #FBFBFF ;">Invent Story System</h1>\
+        <a href="#home"><h1 align="center" class="page-header home" style="font-family: \'Cantarell\', sans-serif; background-color: #FFBF46;border: 5px solid #FBFBFF ;">Invent Story System</h1></a>\
         <h1 align="center" class="page-header" style="font-family: \'Cantarell\', sans-serif; background-color: #FFBF46;border: 5px solid #FBFBFF ;">Arena</h1>\
     <div class="col-lg-3 col-md-6">\
         <div class="panel panel-danger">\
