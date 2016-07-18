@@ -7,10 +7,12 @@ var ListView = require('./ListView');
 var ComputerCollection = require('../collections/ComputerCollection');
 var ComputerModel = require('../models/ComputerModel');
 var TableListView = require('./TableListView');
-var ArenaDashboardView = Backbone.View.extend({
+var AdminView = Backbone.View.extend({
     el: '<div></div>',
 
     template: _.template('\
+    <a href="#home"><h1 align="center" class="page-header home" style="font-family: \'Cantarell\', sans-serif; background-color: #FFBF46;border: 5px solid #FBFBFF ;">Invent Story System</h1></a>\
+    <h1 align="center" class="page-header" style="font-family: \'Cantarell\', sans-serif; background-color: #E63B2E;border: 5px solid #FBFBFF ;">Admin</h1>\
     <div class="container">\
     <div class="row">\
     <div class="col-lg-3 col-md-6">\
@@ -31,15 +33,15 @@ var ArenaDashboardView = Backbone.View.extend({
             <a href="#">\
                 <div class="panel-footer">\
                 <div class="clearfix">\
-                    <span class="pull-left">View Computers</span>\
+                    <span class="pull-left">View Users</span>\
                     <span class="pull-right"><i class="fa fa-2x fa-arrow-circle-right"></i></span>\
                     <div class="clearfix"></div>\
                 </div>\
                   </div>\
             </a>\
-            <a href="#">\
+            <a href="#admin/add">\
                 <div class="panel-footer">\
-                <span class="pull-left">Add Computers</span>\
+                <span class="pull-left">Add User</span>\
                 <span class="pull-right"><i class="fa fa-2x fa-plus-circle"></i></span>\
                     <div class="clearfix"></div>\
                 </div>\
@@ -59,18 +61,18 @@ var ArenaDashboardView = Backbone.View.extend({
                         </div>\
                     </div>\
                 </div>\
-                <a href="#" class="viewComputers">\
+                <a href="#">\
                     <div class="panel-footer">\
                     <div class="clearfix">\
-                        <span class="pull-left">View Computers</span>\
+                        <span class="pull-left">View Locations</span>\
                         <span class="pull-right"><i class="fa fa-2x fa-arrow-circle-right"></i></span>\
                         <div class="clearfix"></div>\
                     </div>\
                       </div>\
                 </a>\
-                <a href="#" class="addComputers">\
+                <a href="#admin/add_dept">\
                     <div class="panel-footer">\
-                    <span class="pull-left">Add Computers</span>\
+                    <span class="pull-left">Add Location</span>\
                     <span class="pull-right"><i class="fa fa-2x fa-plus-circle"></i></span>\
                         <div class="clearfix"></div>\
                     </div>\
@@ -150,34 +152,6 @@ var ArenaDashboardView = Backbone.View.extend({
     initialize: function() {
         this.render();
     },
-    events:{
-      'click .viewComputers': 'handleViewComputer',
-      'click .addComputers': 'handleAddComputer',
-      'click .hamburger' : 'handleHamburger'
-    },
-    handleAddComputer: function(){
-      var computers = new ComputerCollection();
-      computers.fetch();
-      //var computers = new ComputerModel();
-      //console.log(computers);
-      var formView = new FormView({
-          collection: computers
-      });
-      formView.render();
-      $('#page-content-wrapper').html(formView.el);
-    },
-    handleViewComputer: function(){
-      var computers = new ComputerCollection();
-      computers.fetch();
-      //console.log(tasks);
-      var tableListView = new TableListView({
-          collection: computers
-      });
-
-      //var tasks = new FormView({collection: tasks});
-      //$('#form').html(formView.el);
-      $("#page-content-wrapper").html(tableListView.render().el);
-    },
 
     render: function() {
         // this is where your business logic goes.
@@ -189,4 +163,4 @@ var ArenaDashboardView = Backbone.View.extend({
 });
 //var formView = new FormView({ el: $("#form") });
 
-module.exports = ArenaDashboardView;
+module.exports = AdminView;

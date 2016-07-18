@@ -13,10 +13,10 @@ var ArenaDashboardView = Backbone.View.extend({
     el: '<div></div>',
 
     template: _.template('\
+    <a href="#home"><h1 align="center" class="page-header home" style="font-family: \'Cantarell\', sans-serif; background-color: #FFBF46;border: 5px solid #FBFBFF ;">Invent Story System</h1></a>\
+    <h1 align="center" class="page-header" style="font-family: \'Cantarell\', sans-serif; background-color: #E63B2E;border: 5px solid #FBFBFF ;">IT</h1>\
     <div class="container">\
     <div class="row">\
-        <a href="#home"><h1 align="center" class="page-header home" style="font-family: \'Cantarell\', sans-serif; background-color: #FFBF46;border: 5px solid #FBFBFF ;">Invent Story System</h1></a>\
-        <h1 align="center" class="page-header" style="font-family: \'Cantarell\', sans-serif; background-color: #E63B2E;border: 5px solid #FBFBFF ;">IT</h1>\
     <div class="col-lg-3 col-md-6">\
         <div class="panel panel-danger">\
             <div class="panel-heading">\
@@ -132,7 +132,7 @@ var ArenaDashboardView = Backbone.View.extend({
       formView.render();
       $('#page-content-wrapper').html(formView.el);
     },
-    /*handleViewComputer: function(){
+    handleViewComputer: function(){
       var computers = new ComputerCollection();
       computers.fetch();
       //console.log(tasks);
@@ -143,8 +143,7 @@ var ArenaDashboardView = Backbone.View.extend({
       //var tasks = new FormView({collection: tasks});
       //$('#form').html(formView.el);
       $("#page-content-wrapper").html(tableListView.render().el);
-    },*/
-
+    },
     render: function() {
         // this is where your business logic goes.
         // it usually starts with...

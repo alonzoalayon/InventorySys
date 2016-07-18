@@ -9,7 +9,7 @@ var ContentView = Backbone.View.extend({
                   <a href="#home"><h1 align="center" class="page-header" style="font-family: \'Cantarell\', sans-serif; background-color: #FFBF46;border: 5px solid #FBFBFF ;">Invent Story System</h1></a>\
                   <div class="col-lg-4 col-md-6">\
                   <div class="panel panel-primary boxed" style="background-color: #01BAEF;border: 5px solid #FBFBFF ;">\
-                     <a href="#arena"><div class="panel-body">\
+                     <a href="#"><div class="panel-body">\
                      <h2 style="font-family: \'Cantarell\', sans-serif;" align="center">ARENA</h2>\
                      <img id="arena" class="img-responsive" src="../images/sport/png/weight-1.png" style="height: 50px; display: block;\
 margin-left: auto;\
@@ -27,7 +27,7 @@ margin-right: auto; ">\
             </div>\
             <div class="col-lg-4 col-md-6">\
             <div class="panel panel-primary boxed" style="background-color: #FF6B35;border: 5px solid #FBFBFF ;">\
-               <a href="#store"><div class="panel-body">\
+               <a href="#"><div class="panel-body">\
                <h2 style="font-family: \'Cantarell\', sans-serif;" align="center">STORE</h2>\
                <img class="img-responsive" src="../images/essential-collection/png/price-tag.png" style="height: 50px; display: block;\
 margin-left: auto;\

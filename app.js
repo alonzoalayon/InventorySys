@@ -11,6 +11,8 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Computer_System
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var computers = require('./routes/computers');
+var computer_user = require('./routes/computer_users');
+var departments = require('./routes/departmentss');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var passport = require('./config/passport');
@@ -41,7 +43,8 @@ app.use(passport.session());
 app.use('/', routes);
 app.use('/users', middleware.auth, users);
 app.use('/computers', middleware.auth, computers);
-
+app.use('/computer_user', middleware.auth, computer_user);
+app.use('/departments', middleware.auth, departments);
 
 
 // catch 404 and forward to error handler
