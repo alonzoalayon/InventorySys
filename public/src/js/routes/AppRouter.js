@@ -11,6 +11,10 @@ var Computer_UserModel = require('../models/Computer_UserModel');
 var AdminView = require('../views/AdminView');
 var NewUser = require('../views/NewUser');
 var Add_Dept_View = require('../views/Add_Dept_View');
+var TableUserView = require('../views/TableUserView');
+var DepartmentsModel = require('../models/DepartmentsModel');
+var DepartmentsCollection = require('../collections/DepartmentsCollection');
+var DepartmentTableView = require('../views/DepartmentTableView');
 var AppRouter = Backbone.Router.extend({
       routes: {
           '': 'homeRoute',
@@ -34,16 +38,26 @@ var AppRouter = Backbone.Router.extend({
         var users = new Computer_UserCollection();
         var computer_user = new Computer_UserModel();
         users.fetch();
-        console.log(users);
-        var newUser = new NewUser({model: computer_user,collection:users});
+        var tableUserView = new TableUserView({model:computer_user,
+            collection: users
+        });
+
+        var newUser = new NewUser();
         newUser.render();
-          $("#content").html(newUser.el);
+
+          $("#content").html(tableUserView.el);
+          $("#content").append(newUser.el);
       },
       adminAddDeptRoute: function(){
-
+        var departmentsCollection = new DepartmentsCollection();
+        //var departments = new DepartmentsModel();
         var add_dept_view = new Add_Dept_View();
+        departmentsCollection.fetch();
+        var depttableView = new DepartmentTableView({collection: departmentsCollection});
+
         add_dept_view.render();
-        $("#content").html(add_dept_view.el);
+        $('#content').html(depttableView.render().el);
+        $("#content").append(add_dept_view.el);
       },
       arenaRoute: function () {
           var aboutView = new ArenaDashboardView();
