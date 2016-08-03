@@ -1,5 +1,5 @@
 var Backbone = require('backbone');
-var DepartmentsModel = require('../models/ComputerModel');
+var DepartmentsModel = require('../models/DepartmentsModel');
 
 var DepartmentsCollection = Backbone.Collection.extend({
     url: '/departments',

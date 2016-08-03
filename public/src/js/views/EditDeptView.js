@@ -6,7 +6,7 @@ var EditDeptView = Backbone.View.extend({
     el: '<div></div>',
     initialize: function(){
       //listens to update even from collection and calls this.render
-      this.listenTo(this.collection, "update", this.render)
+      this.listenTo(this.collection, "change", this.render)
       //this.listenTo(this.model, "remove", this.remove)
     },
     template: _.template('\
